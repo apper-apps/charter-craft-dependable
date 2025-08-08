@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import ApperIcon from '@/components/ApperIcon';
-import Card from '@/components/atoms/Card';
-import Button from '@/components/atoms/Button';
-import ProgressBar from '@/components/atoms/ProgressBar';
-import Loading from '@/components/ui/Loading';
-import Error from '@/components/ui/Error';
-import Empty from '@/components/ui/Empty';
-import pillarService from '@/services/api/pillarService';
-import responseService from '@/services/api/responseService';
-import { toast } from 'react-toastify';
+import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import { toast } from "react-toastify";
+import pillarService from "@/services/api/pillarService";
+import responseService from "@/services/api/responseService";
+import ApperIcon from "@/components/ApperIcon";
+import Empty from "@/components/ui/Empty";
+import ErrorComponent from "@/components/ui/Error";
+import Loading from "@/components/ui/Loading";
+import Card from "@/components/atoms/Card";
+import ProgressBar from "@/components/atoms/ProgressBar";
+import Button from "@/components/atoms/Button";
 
 function CharterPage({ currentUser }) {
   const [loading, setLoading] = useState(true);
@@ -23,29 +23,66 @@ function CharterPage({ currentUser }) {
   }, [currentUser]);
 
 const loadCharterData = async () => {
+    setLoading(true);
+    setError(null);
+
     try {
-      setLoading(true);
-      setError(null);
-
-      // Validate currentUser and currentUser.Id exist
-      if (!currentUser?.Id) {
-        throw new Error('User information is not available');
-      }
-
-const [pillarsData, responsesData] = await Promise.all([
-        pillarService.getAll(),
-        responseService.getUserResponses(currentUser.Id)
+      console.log('Loading charter data...');
+      
+      // Use Promise.allSettled for better error handling
+      const [pillarsResult, responsesResult] = await Promise.allSettled([
+        pillarService.getAllPillars(),
+        responseService.getAllResponses()
       ]);
 
-      setPillars(pillarsData);
-      setResponses(responsesData);
-      generateCharterData(pillarsData, responsesData);
+      // Check if any promises were rejected
+      if (pillarsResult.status === 'rejected') {
+        console.error('Pillars service error:', pillarsResult.reason);
+        throw new Error(`Failed to load pillars: ${pillarsResult.reason?.message || 'Unknown error'}`);
+      }
+
+      if (responsesResult.status === 'rejected') {
+        console.error('Responses service error:', responsesResult.reason);
+        throw new Error(`Failed to load responses: ${responsesResult.reason?.message || 'Unknown error'}`);
+      }
+
+      // Validate data
+      const pillarsData = pillarsResult.value;
+      const responsesData = responsesResult.value;
+
+      if (!pillarsData || !Array.isArray(pillarsData)) {
+        throw new Error('Invalid pillars data received');
+      }
+
+      if (!responsesData || !Array.isArray(responsesData)) {
+        throw new Error('Invalid responses data received');
+      }
+
+      console.log('Data loaded successfully:', { pillars: pillarsData.length, responses: responsesData.length });
+      
+      const charter = generateCharterData(pillarsData, responsesData);
+      
+      if (!charter) {
+        throw new Error('Failed to generate charter data');
+      }
+      
+      setCharterData(charter);
+      console.log('Charter data set successfully');
+      
     } catch (err) {
       console.error('Error loading charter data:', err);
-      setError('Failed to load your charter. Please try again.');
-      toast.error('Failed to load charter data');
+      
+      // Create detailed error message
+      const errorMessage = err instanceof Error 
+        ? err.message 
+        : typeof err === 'string' 
+        ? err 
+        : 'An unexpected error occurred while loading charter data';
+      
+      setError(errorMessage);
+      toast.error(`Error loading charter data: ${errorMessage}`);
     } finally {
-      setLoading(false);
+setLoading(false);
     }
   };
 
@@ -77,16 +114,16 @@ const [pillarsData, responsesData] = await Promise.all([
 
     const overallScore = pillarSummaries.length > 0
       ? pillarSummaries.reduce((sum, p) => sum + p.avgScore, 0) / pillarSummaries.length
-      : 0;
+: 0;
 
-    setCharterData({
+    return {
       pillarSummaries,
       overallCompletion: Math.round(overallCompletion),
       overallScore: Math.round(overallScore * 10) / 10,
       isComplete: overallCompletion >= 100,
       totalQuestions: pillarSummaries.reduce((sum, p) => sum + p.totalQuestions, 0),
       answeredQuestions: pillarSummaries.reduce((sum, p) => sum + p.answeredQuestions, 0)
-    });
+    };
   };
 
   const getScoreColor = (score) => {
@@ -100,10 +137,10 @@ const [pillarsData, responsesData] = await Promise.all([
     if (score >= 3) return 'Good';
     if (score >= 2) return 'Fair';
     return 'Needs Improvement';
-  };
+};
 
   if (loading) return <Loading />;
-  if (error) return <Error message={error} onRetry={loadCharterData} />;
+  if (error) return <ErrorComponent message={error} onRetry={loadCharterData} />;
   if (!charterData) return <Empty message="No charter data available" />;
 
   return (
