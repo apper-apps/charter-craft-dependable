@@ -1,0 +1,54 @@
+[
+  {
+    "Id": 1,
+    "userId": "1",
+    "pillarId": 1,
+    "responses": {
+      "question_1": "Our bakery started when my grandmother immigrated here with nothing but her recipes and a dream. The heartbeat was to create something that would feed our community while preserving our family traditions.",
+      "question_2": "We're still here because we believe in the power of bringing people together through food. Every celebration, every morning coffee, every birthday cake - we're part of people's most important moments.",
+      "question_3": "I would tell them that we own this business because it represents our family's commitment to service, quality, and community. It's not just about making money - it's about making a difference.",
+      "question_4": "Quality ingredients, honest pricing, and treating every customer like family. These values have guided us for three generations and must never change."
+    },
+    "lastUpdated": "2024-01-20T15:30:00Z",
+    "isComplete": true
+  },
+  {
+    "Id": 2,
+    "userId": "1",
+    "pillarId": 2,
+    "responses": {
+      "question_5": "I want us to keep this business for generations. It's more than a company - it's our family legacy and a cornerstone of our community.",
+      "question_6": "I see myself transitioning from operator to advisor over the next 10 years, while my children take on more operational responsibilities.",
+      "question_7": "Only direct descendants and spouses should own shares, but spouses should have limited voting rights to maintain family control.",
+      "question_8": "I draw the line at outside investors or non-family ownership. This must remain a family enterprise."
+    },
+    "lastUpdated": "2024-01-21T10:15:00Z",
+    "isComplete": true
+  },
+  {
+    "Id": 3,
+    "userId": "2",
+    "pillarId": 1,
+    "responses": {
+      "question_1": "We started this tech company to solve real problems for small businesses. The heartbeat was innovation combined with genuine care for our customers' success.",
+      "question_2": "We're still here because technology keeps evolving, and we love the challenge of staying ahead while maintaining our personal touch.",
+      "question_3": "",
+      "question_4": ""
+    },
+    "lastUpdated": "2024-01-22T14:45:00Z",
+    "isComplete": false
+  },
+  {
+    "Id": 4,
+    "userId": "3",
+    "pillarId": 1,
+    "responses": {
+      "question_1": "Our construction business began when my father saw the need for honest, quality builders in our community. The heartbeat was integrity in every project.",
+      "question_2": "",
+      "question_3": "",
+      "question_4": ""
+    },
+    "lastUpdated": "2024-01-23T09:20:00Z",
+    "isComplete": false
+  }
+]

@@ -1,0 +1,102 @@
+[
+  {
+    "Id": 1,
+    "title": "Reason to Begin",
+    "subtitle": "Why Are We in Business Together?",
+    "description": "Explore the fundamental purpose and values that drive your family business.",
+    "icon": "Heart",
+    "questions": [
+      {
+        "Id": 1,
+        "text": "What was the original heartbeat behind this business?"
+      },
+      {
+        "Id": 2,
+        "text": "Why did we start—or why are we still here?"
+      },
+      {
+        "Id": 3,
+        "text": "If your children or grandchildren asked, 'Why does our family own this business?'—what would you say?"
+      },
+      {
+        "Id": 4,
+        "text": "What values must we never compromise, even when things get tough?"
+      }
+    ]
+  },
+  {
+    "Id": 2,
+    "title": "Business Type",
+    "subtitle": "End Game Thinking",
+    "description": "Define ownership structure and long-term vision for the business future.",
+    "icon": "Target",
+    "questions": [
+      {
+        "Id": 5,
+        "text": "Do I want us to keep this business for generations, or prepare to sell one day? Why?"
+      },
+      {
+        "Id": 6,
+        "text": "What kind of role do I want—operator, owner, investor, supporter?"
+      },
+      {
+        "Id": 7,
+        "text": "Who should be allowed to own shares—and who shouldn't?"
+      },
+      {
+        "Id": 8,
+        "text": "Where do I draw the line, and why?"
+      }
+    ]
+  },
+  {
+    "Id": 3,
+    "title": "Expectations",
+    "subtitle": "The Three Circles & Beyond",
+    "description": "Clarify roles, responsibilities, and expectations across family, business, and ownership.",
+    "icon": "Users",
+    "questions": [
+      {
+        "Id": 9,
+        "text": "Where do I sit today—Family, Business, Ownership? Am I clear about that?"
+      },
+      {
+        "Id": 10,
+        "text": "Do I believe we have a clear succession plan—or are we hoping things just work out?"
+      },
+      {
+        "Id": 11,
+        "text": "What do I expect from other family members—and what do I think they expect of me?"
+      },
+      {
+        "Id": 12,
+        "text": "How do we balance family harmony with business performance requirements?"
+      }
+    ]
+  },
+  {
+    "Id": 4,
+    "title": "Extinction",
+    "subtitle": "What Could Go Wrong?",
+    "description": "Identify potential risks and build resilience for long-term family business unity.",
+    "icon": "Shield",
+    "questions": [
+      {
+        "Id": 13,
+        "text": "What's the biggest threat to our family staying united in business?"
+      },
+      {
+        "Id": 14,
+        "text": "Where are we strong—and where are we vulnerable—when it comes to people, money, skills, and relationships?"
+      },
+      {
+        "Id": 15,
+        "text": "Who makes the tough calls in our family business today?"
+      },
+      {
+        "Id": 16,
+        "text": "Is that clear—and is it working?"
+      }
+    ]
+  }
+]

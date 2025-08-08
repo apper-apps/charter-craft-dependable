@@ -1,0 +1,62 @@
+[
+  {
+    "Id": 1,
+    "userId": "1",
+    "businessName": "Johnson Family Bakery",
+    "position": "CEO",
+    "otherOwners": "Tom Johnson (Father), Mary Johnson (Mother)",
+    "businessType": "retail",
+    "yearsInBusiness": 25,
+    "annualRevenue": "1m-5m",
+    "country": "United States",
+    "city": "Portland"
+  },
+  {
+    "Id": 2,
+    "userId": "2",
+    "businessName": "Chen Tech Solutions",
+    "position": "Founder & CTO",
+    "otherOwners": "Linda Chen (Wife), James Chen (Son)",
+    "businessType": "technology",
+    "yearsInBusiness": 12,
+    "annualRevenue": "5m-10m",
+    "country": "United States",
+    "city": "San Francisco"
+  },
+  {
+    "Id": 3,
+    "userId": "3",
+    "businessName": "Rodriguez Construction",
+    "position": "Owner",
+    "otherOwners": "Carlos Rodriguez (Husband), Ana Rodriguez (Daughter)",
+    "businessType": "construction",
+    "yearsInBusiness": 18,
+    "annualRevenue": "500k-1m",
+    "country": "United States",
+    "city": "Austin"
+  },
+  {
+    "Id": 4,
+    "userId": "4",
+    "businessName": "Thompson Manufacturing",
+    "position": "President",
+    "otherOwners": "Robert Thompson (Father), Susan Thompson (Sister)",
+    "businessType": "manufacturing",
+    "yearsInBusiness": 35,
+    "annualRevenue": "over-10m",
+    "country": "United States",
+    "city": "Detroit"
+  },
+  {
+    "Id": 6,
+    "userId": "6",
+    "businessName": "Williams Agriculture",
+    "position": "Farm Owner",
+    "otherOwners": "Helen Williams (Wife), Mark Williams (Son), Jenny Williams (Daughter)",
+    "businessType": "agriculture",
+    "yearsInBusiness": 42,
+    "annualRevenue": "1m-5m",
+    "country": "United States",
+    "city": "Des Moines"
+  }
+]

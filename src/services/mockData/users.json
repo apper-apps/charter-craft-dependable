@@ -1,0 +1,50 @@
+[
+  {
+    "Id": 1,
+    "fullName": "Sarah Johnson",
+    "email": "sarah.johnson@example.com",
+    "phone": "+1-555-0101",
+    "role": "participant",
+    "createdAt": "2024-01-15T10:30:00Z"
+  },
+  {
+    "Id": 2,
+    "fullName": "Michael Chen",
+    "email": "michael.chen@example.com",
+    "phone": "+1-555-0102",
+    "role": "participant",
+    "createdAt": "2024-01-16T14:20:00Z"
+  },
+  {
+    "Id": 3,
+    "fullName": "Emily Rodriguez",
+    "email": "emily.rodriguez@example.com",
+    "phone": "+1-555-0103",
+    "role": "participant",
+    "createdAt": "2024-01-17T09:15:00Z"
+  },
+  {
+    "Id": 4,
+    "fullName": "David Thompson",
+    "email": "david.thompson@example.com",
+    "phone": "+1-555-0104",
+    "role": "participant",
+    "createdAt": "2024-01-18T16:45:00Z"
+  },
+  {
+    "Id": 5,
+    "fullName": "Lisa Anderson",
+    "email": "lisa.anderson@cilc.com",
+    "phone": "+1-555-0105",
+    "role": "admin",
+    "createdAt": "2024-01-10T08:00:00Z"
+  },
+  {
+    "Id": 6,
+    "fullName": "John Williams",
+    "email": "john.williams@example.com",
+    "phone": "+1-555-0106",
+    "role": "participant",
+    "createdAt": "2024-01-19T11:30:00Z"
+  }
+]
