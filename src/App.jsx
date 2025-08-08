@@ -4,6 +4,7 @@ import { ToastContainer } from "react-toastify";
 import Header from "@/components/molecules/Header";
 import DashboardPage from "@/components/pages/DashboardPage";
 import PillarPage from "@/components/pages/PillarPage";
+import CharterPage from "@/components/pages/CharterPage";
 import ExportPage from "@/components/pages/ExportPage";
 import AdminPage from "@/components/pages/AdminPage";
 import OnboardingPage from "@/components/pages/OnboardingPage";
@@ -91,14 +92,14 @@ function App() {
             <Route 
               path="/pillar/:pillarId" 
               element={<PillarPage currentUser={currentUser} />} 
-            />
+/>
             <Route 
               path="/charter" 
-              element={<Navigate to="/dashboard" replace />} 
+              element={<CharterPage currentUser={currentUser} />} 
             />
             <Route 
               path="/export" 
-              element={<ExportPage currentUser={currentUser} />} 
+              element={<ExportPage currentUser={currentUser} />}
             />
             {currentUser.role === "admin" && (
               <Route 
