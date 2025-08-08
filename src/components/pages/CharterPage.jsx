@@ -22,10 +22,15 @@ function CharterPage({ currentUser }) {
     loadCharterData();
   }, [currentUser]);
 
-  const loadCharterData = async () => {
+const loadCharterData = async () => {
     try {
       setLoading(true);
       setError(null);
+
+      // Validate currentUser and currentUser.Id exist
+      if (!currentUser?.Id) {
+        throw new Error('User information is not available');
+      }
 
 const [pillarsData, responsesData] = await Promise.all([
         pillarService.getAll(),

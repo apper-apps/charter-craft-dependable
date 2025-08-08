@@ -17,27 +17,48 @@ const responseService = {
     return { ...response };
   },
 
-  async getUserResponses(userId) {
+async getUserResponses(userId) {
     await delay(350);
+    
+    // Validate userId parameter
+    if (userId == null || userId === undefined) {
+      return [];
+    }
+    
+    const userIdString = String(userId);
     return responsesData
-      .filter(r => r.userId === userId.toString())
+      .filter(r => r.userId === userIdString)
       .map(r => ({ ...r }));
   },
 
-  async getPillarResponse(userId, pillarId) {
+async getPillarResponse(userId, pillarId) {
     await delay(300);
+    
+    // Validate parameters
+    if (userId == null || userId === undefined) {
+      return null;
+    }
+    
+    const userIdString = String(userId);
     const response = responsesData.find(r => 
-      r.userId === userId.toString() && r.pillarId === pillarId
+      r.userId === userIdString && r.pillarId === pillarId
     );
     return response ? { ...response } : null;
   },
 
-  async saveResponse(responseData) {
+async saveResponse(responseData) {
     await delay(400);
+    
+    // Validate responseData and userId
+    if (!responseData || responseData.userId == null || responseData.userId === undefined) {
+      throw new Error('Invalid response data: userId is required');
+    }
+    
+    const userIdString = String(responseData.userId);
     
     // Check if response already exists
     const existingIndex = responsesData.findIndex(r => 
-      r.userId === responseData.userId.toString() && r.pillarId === responseData.pillarId
+      r.userId === userIdString && r.pillarId === responseData.pillarId
     );
     
     if (existingIndex !== -1) {
@@ -45,7 +66,7 @@ const responseService = {
       responsesData[existingIndex] = {
         ...responsesData[existingIndex],
         ...responseData,
-        userId: responseData.userId.toString(),
+        userId: userIdString,
         lastUpdated: new Date().toISOString()
       };
       return { ...responsesData[existingIndex] };
@@ -54,7 +75,7 @@ const responseService = {
       const newResponse = {
         Id: Math.max(...responsesData.map(r => r.Id)) + 1,
         ...responseData,
-        userId: responseData.userId.toString(),
+        userId: userIdString,
         lastUpdated: new Date().toISOString()
       };
       responsesData.push(newResponse);
@@ -62,27 +83,40 @@ const responseService = {
     }
   },
 
-  async create(responseData) {
+async create(responseData) {
     await delay(400);
+    
+    // Validate responseData and userId
+    if (!responseData || responseData.userId == null || responseData.userId === undefined) {
+      throw new Error('Invalid response data: userId is required');
+    }
+    
     const newResponse = {
       Id: Math.max(...responsesData.map(r => r.Id)) + 1,
       ...responseData,
-      userId: responseData.userId.toString(),
+      userId: String(responseData.userId),
       lastUpdated: new Date().toISOString()
     };
     responsesData.push(newResponse);
     return { ...newResponse };
   },
 
-  async update(id, responseData) {
+async update(id, responseData) {
     await delay(350);
     const index = responsesData.findIndex(r => r.Id === id);
     if (index === -1) {
       throw new Error("Response not found");
     }
+    
+    // Ensure userId is properly handled if provided in update
+    const updatedData = { ...responseData };
+    if (updatedData.userId != null && updatedData.userId !== undefined) {
+      updatedData.userId = String(updatedData.userId);
+    }
+    
     responsesData[index] = { 
       ...responsesData[index], 
-      ...responseData,
+      ...updatedData,
       lastUpdated: new Date().toISOString()
     };
     return { ...responsesData[index] };
