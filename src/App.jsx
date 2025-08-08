@@ -13,7 +13,7 @@ import useAuth from "@/hooks/useAuth";
 import businessProfileService from "@/services/api/businessProfileService";
 
 function App() {
-  const { currentUser, loading, isAuthenticated, logout, switchToAdmin, switchToParticipant } = useAuth();
+const { currentUser, loading, isAuthenticated, logout } = useAuth();
   const [needsOnboarding, setNeedsOnboarding] = useState(false);
   const [checkingProfile, setCheckingProfile] = useState(true);
 
@@ -45,12 +45,8 @@ function App() {
   };
 
   // Enhanced logout with role switching for demo
-  const enhancedLogout = () => {
-    if (currentUser?.role === "admin") {
-      switchToParticipant();
-    } else {
-      switchToAdmin();
-    }
+const enhancedLogout = () => {
+    logout();
   };
 
   if (loading || checkingProfile) {

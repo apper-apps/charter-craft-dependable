@@ -52,36 +52,13 @@ const useAuth = () => {
     toast.success("Logged out successfully!");
   };
 
-  const switchToAdmin = () => {
-    const adminUser = {
-      id: "5",
-      fullName: "Lisa Anderson",
-      email: "lisa.anderson@cilc.com",
-      role: "admin"
-    };
-    setCurrentUser(adminUser);
-    toast.success("Switched to admin view!");
-  };
-
-  const switchToParticipant = () => {
-    const participantUser = {
-      id: "1",
-      fullName: "Sarah Johnson",
-      email: "sarah.johnson@example.com",
-      role: "participant"
-    };
-    setCurrentUser(participantUser);
-    toast.success("Switched to participant view!");
-  };
 
   return {
     currentUser,
     loading,
     isAuthenticated,
-    login,
-    logout,
-    switchToAdmin,
-    switchToParticipant
+login,
+    logout
   };
 };
 
