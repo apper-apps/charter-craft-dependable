@@ -27,9 +27,9 @@ function CharterPage({ currentUser }) {
       setLoading(true);
       setError(null);
 
-      const [pillarsData, responsesData] = await Promise.all([
+const [pillarsData, responsesData] = await Promise.all([
         pillarService.getAll(),
-        responseService.getAllByUser(currentUser.Id)
+        responseService.getUserResponses(currentUser.Id)
       ]);
 
       setPillars(pillarsData);
